@@ -1,0 +1,27 @@
+[
+  {
+      "name": "Chair",
+      "description": "Chair for all",
+      "price": "2000.00",
+      "category": "all"
+  },
+  {
+      "name": "Office chair",
+      "description": "Chair for office workers",
+      "price": "5000.00",
+      "category": "office"
+
+  },
+  {
+      "name": "Modern chair",
+      "description": "Chair for stylish people",
+      "price": "10000.00",
+      "category": "modern"
+  },
+  {
+      "name": "Classic chair",
+      "description": "Leather chair for rich people",
+      "price": "50000.00",
+      "category": "classic"
+  }
+]
