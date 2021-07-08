@@ -1,0 +1,46 @@
+{% extends 'geekshop/base.html' %}
+{% load static %}
+{% block title%}{{ category.name|title }}{% endblock %}
+{% block styles%}
+<link rel="stylesheet" type="text/css" href="{% static 'geekshop/style.css'%}">
+<link rel="stylesheet" href="{% static 'mainapp/red_but.css'%}">
+<link rel="stylesheet" href="{% static 'geekshop/fonts/font-awesome/css/font-awesome.css'%}">
+{% endblock %}
+
+{% block top%}
+<div class="hero-white">
+	{% include 'geekshop/includes/inc_header_sidebar.html' %}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="links clearfix">
+		<ul class="links-menu">
+			<li>
+                <a href="{% url 'products:by_category' 0  %}" class="{% if request.resolver_match.kwargs.pk == 0 %}active{% endif %}">Все</a>
+            </li>
+
+			{% for category in categories %}
+				<li><a href="{% url 'products:by_category' category.pk  %}" class="{% if request.resolver_match.kwargs.pk|add:0 == category.pk %}active{% endif %}">{{ category.name }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+
+<div class="details-products">
+<h3 class="big">Категория:&nbsp;{{ category.name }}</h3><br><br><br>
+<div style="height: auto; display: flex;justify-content: space-around">
+    {% if products %}
+        {% for i in products %}
+            <div style="display: block; text-align: center">
+            <img style="height: 60px;" src="../../media/{{ i.image }}">
+            <p>{{ i.name }}</p>
+            <p style="font-size: 0.8em">{{ i.price }}</p>
+            <a href="{% url 'basket:add_to_basket' i.pk %}">Купить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Товар отсутствует</p>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
