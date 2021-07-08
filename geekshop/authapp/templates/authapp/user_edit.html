@@ -1,0 +1,18 @@
+{% extends 'authapp/base.html' %}
+
+{% block header_text %}Личный кабинет{% endblock %}
+
+{% block form %}
+    <div class="text-center"><img src="/media/{{ user.avatar }}" style="border-radius: 100px; height: 200px">
+
+    <h3>{{ user.username }}</h3>
+    </div>
+    <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ edit_form.as_p }}
+    <input class="form-control" type="submit" value="сохранить">
+    </form>
+    <button class="btn btn-round form-control last">
+        <a href="{% url 'index' %}" class="">на главную</a>
+    </button>
+{% endblock %}

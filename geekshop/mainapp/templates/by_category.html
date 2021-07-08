@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'geekshop/base.html' %}
 {% load static %}
 {% block title%}{{ category|title }}{% endblock %}
 {% block styles%}
@@ -9,14 +9,22 @@
 
 {% block top%}
 <div class="hero-white">
-	{% include 'includes/inc_header_sidebar.html' %}
+	{% include 'geekshop/includes/inc_header_sidebar.html' %}
 </div>
 {% endblock %}
 
 {% block content %}
+<div class="links clearfix">
+		<ul class="links-menu">
+			{% for category in categories %}
+				<li><a href="{% url 'products:by_category' category.uuid  %}" class="{% if category.name == 'все' %}active{% endif %}">{{ category.name }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
 <div class="details-products">
     <h3 class="big">Категория:&nbsp;{{ category }}</h3>
     {% for i in products %}
+    <p>{{ i.id }}</p>
     <p>{{ i.name }}</p>
     {% endfor %}
 </div>
