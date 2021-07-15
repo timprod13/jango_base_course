@@ -1,0 +1,30 @@
+{% extends 'geekshop/base.html' %}
+{% load static %}
+{% block title%}{{title|title}}{% endblock %}
+{% block styles%}
+<link rel="stylesheet" type="text/css" href="{% static 'geekshop/style.css'%}">
+<link rel="stylesheet" href="{% static 'mainapp/red_but.css'%}">
+<link rel="stylesheet" href="{% static 'geekshop/fonts/font-awesome/css/font-awesome.css'%}">
+{% endblock %}
+
+{% block top%}
+<div class="hero-white">
+	{% include 'geekshop/includes/inc_header_sidebar.html' %}
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="details-products">
+        {% if basket %}
+            <ul style="list-style: none">
+                {% for b in basket %}
+                <li style="padding: 10px 0 0; color: #212121; font-family: Tahoma; size: 1.1em; letter-spacing: 0.1em">{{ b.product }} : {{ b.quantity }} </li>
+                {% endfor %}
+            </ul>
+            <br>
+            <br>
+    <h4 style="font-family: Tahoma; size: 1.4em; letter-spacing: 0.2em">total:{{ total }}</h4>
+{% endif %}
+    </div>
+}
+{% endblock %}

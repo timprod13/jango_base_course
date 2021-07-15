@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp',
     'authapp',
+    'basket',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'geekshop.wsgi.application'
+
+AUTH_USER_MODEL = 'authapp.ShopUser'
+
+APPEND_SLASH = False
 
 AUTH_USER_MODEL = 'authapp.ShopUser'
 
@@ -126,7 +131,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = (os.path.join(BASE_DIR,   'media'))
+MEDIA_ROOT = (os.path.join(BASE_DIR, 'media'))
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'geekshop', 'static'),

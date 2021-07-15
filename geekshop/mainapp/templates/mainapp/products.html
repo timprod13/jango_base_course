@@ -14,15 +14,15 @@
 {% endblock %}
 
 {% block content %}
-{% block content %}
 <div class="details">
 	<div class="links clearfix">
 		<ul class="links-menu">
-{#            {% for category in categories %}#}
-{#				<li><a href="{% url 'products:by_category' category.uuid  %}" class="{% if category.name == 'все' %}active{% endif %}">{{ category.name }}</a></li>#}
-{#			{% endfor %}#}
+            <li>
+                <a href="{% url 'products:by_category' 0  %}" class="{% if request.resolver_match.kwargs.pk == '0' %}active{% endif %}">Все</a>
+            </li>
+
 			{% for category in categories %}
-				<li><a href="{% url 'products:by_category' category.uuid  %}" class="{% if category.name == 'все' %}active{% endif %}">{{ category.name }}</a></li>
+				<li><a href="{% url 'products:by_category' category.pk  %}" class="{% if request.resolver_match.kwargs.pk|add:'0' == category.pk %}active{% endif %}">{{ category.name }}</a></li>
 			{% endfor %}
 		</ul>
 	</div>
@@ -87,10 +87,8 @@
 				</a>
 			</div>
 			{% endfor %}
-
 		</div>
 	</div>
 </div>
-
 <div class="clr"></div>
 {% endblock %}
