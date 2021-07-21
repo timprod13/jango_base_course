@@ -4,6 +4,7 @@ from .views import index, contact
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('adminapp/', include('adminapp.urls', namespace='adminapp')),
     path('', index, name='index'),
     path('contact/', contact, name='contact'),
     path('products/', include('mainapp.urls', namespace='products')),

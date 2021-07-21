@@ -1,0 +1,16 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-sm">
+  <ul class="list-group">
+    <li class="list-group-item">Название: {{ product.name }}</li>
+    <li class="list-group-item">Описание: {{ product.description }}</li>
+    <li class="list-group-item">Цена: {{ product.price }}</li>
+    <li class="list-group-item"><img src="/media/{{ product.image }}/"></li>
+    <li class="list-group-item">Создан: {{ product.created }}</li>
+    <li class="list-group-item">Изменен: {{ product.updated }}</li>
+    <li class="list-group-item">Категория: {{ product.category }}</li>
+  </ul>
+</div>
+{% endblock %}
